@@ -15,7 +15,7 @@
 var app = new Vue({
   el: "#app",
   data: {
-    dischi: '',
+    dischi: [],
     valoreSelezionato: '',
     generiMusicali: []
   },
