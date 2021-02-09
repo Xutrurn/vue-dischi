@@ -15,8 +15,9 @@
 var app = new Vue({
   el: "#app",
   data: {
-    dischi: [],
-    // tipi: ['All']
+    dischi: '',
+    valoreSelezionato: '',
+    generiMusicali: []
   },
   mounted() {
 
@@ -25,9 +26,24 @@ var app = new Vue({
       .then((result) => {
         // console.log(result.data.response);
         this.dischi = result.data.response;
+        this.selezionaGenere();
       })
       .catch(error => console.log('errore', error));
+  },
+
+  methods: {
+    selezionaGenere() {
+      this.dischi.forEach(element => {
+        // console.log(element);
+        if (!this.generiMusicali.includes(element.genre)) {
+          this.generiMusicali.push(element.genre)
+          // console.log(this.generiMusicali);
+        }
+      });
+    }
+
   }
+
 
 
 });

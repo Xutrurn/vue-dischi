@@ -20,11 +20,17 @@
       <div class="container">
         <img src="logo.png" alt="logo" />
       </div>
+      <div class="mt-28">
+        <select class="select-css" v-model="valoreSelezionato">
+          <option value="">Tutti i generi musicali</option>
+          <option v-for="genereMusicale in generiMusicali" :value="genereMusicale">{{ genereMusicale }}</option>
+        </select>
+      </div>
     </header>
 
     <div class="cds-container container">
       <!-- Disco ad esempio -->
-      <div class="cd" v-for="disco in dischi">
+      <div class="cd" v-for="disco in dischi" v-if="disco.genre == valoreSelezionato || valoreSelezionato == ''">
         <img :src="disco.poster" :alt="disco.title">
         <h3>{{disco.title}}</h3>
         <span class="author">{{disco.author}}</span>
